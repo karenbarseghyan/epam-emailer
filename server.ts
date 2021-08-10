@@ -6,7 +6,7 @@ let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'process.env.EMAIL',
-        password: 'process.env.PASSWORD'
+        pass: 'process.env.PASS'
     }
 });
 
@@ -17,10 +17,10 @@ let mailOptions = {
     text: 'Email Received'
 }
 
-transporter.sendMail(mailOptions, function(err: any,data: any){
+let timerId = setInterval(() => transporter.sendMail(mailOptions, function(err: any,data: any){
     if(err){
         console.log("error", err)
     }else{
         console.log("email sent")
     }
-})
+}), 300000);

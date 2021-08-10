@@ -17,9 +17,9 @@ let mailOptions = {
     text: 'Email Received'
 }
 
-transporter.sendMail(mailOptions, (err,data)=>{
+transporter.sendMail(mailOptions, function(err: any,data: any){
     if(err){
-        console.log("error")
+        console.log("error", err)
     }else{
         console.log("email sent")
     }
